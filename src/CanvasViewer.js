@@ -397,7 +397,7 @@ angular.module('CanvasViewer',[]).directive('canvasViewer', ['$window', '$http',
 						reader.refresh();
 					}
 
-					
+
 					// Compute new image size
 					if (!reader.isZoom) {
 						newWidth = reader.width;
@@ -409,7 +409,7 @@ angular.module('CanvasViewer',[]).directive('canvasViewer', ['$window', '$http',
 					// new image position after zoom
 					picPos.x = picPos.x - (newWidth - oldWidth)/2;
 					picPos.y = picPos.y - (newHeight - oldHeight)/2;
-				});				
+				});
 			}
 
 			scope.rotate = function(direction) {
@@ -480,6 +480,9 @@ angular.module('CanvasViewer',[]).directive('canvasViewer', ['$window', '$http',
 						applyTransform();
 					}
 				});
+
+				// Rotate to default
+				scope.options.rotate.value = 0;
 			}
 
 			scope.play = function() {
@@ -493,7 +496,7 @@ angular.module('CanvasViewer',[]).directive('canvasViewer', ['$window', '$http',
 					scope.options.adsrc.stop(0);
 				}
 			}
-			
+
 			function resizeCanvas() {
 				scope.$applyAsync(function() {
 					var canvasSize = canvasEl.parentNode;
@@ -515,7 +518,7 @@ angular.module('CanvasViewer',[]).directive('canvasViewer', ['$window', '$http',
 			}
 			//
 			scope.$watch(parentChange, function() {
-					resizeCanvas();	
+					resizeCanvas();
 			}, true);
    //      	// resize canvas on window resize to keep aspect ratio
 			// angular.element($window).bind('resize', function() {

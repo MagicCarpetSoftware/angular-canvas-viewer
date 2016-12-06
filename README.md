@@ -13,21 +13,41 @@ A sample demo is available [here](http://fcrohas.github.io/angular-canvas-viewer
 
 ## Features
 
-- [x]	Support many format of pictures and sound (PNG, JPG, PDF, TIFF, WAV, OGG, MPEG)
-- [x]	Module delivery or whole package
-- [x]	Image rotation and Zoom parametric ( Rotation angle by default is set to 90°)
-- [x]	External control
-- [x]	Metadata information extraction
-- [x]	Support multipage ( TIFF and PDF)
+- [x] Support many format of pictures and sound (PNG, JPG, PDF, TIFF, WAV, OGG, MPEG)
+      - [x]Module delivery or whole package
+      - [x]Image rotation and Zoom parametric ( Rotation angle by default is set to 90°)
+      - [x]External control
+      - [x]Metadata information extraction
+      - [x]Support multipage ( TIFF and PDF)
 
-## How to build
+## How to build (don't do this for Gentu)
 
 You need  `npm` package manager :
 
     # npm install
     # gulp dist
 
-## How to use it
+## How to use it in Gentu
+Edit package.json file:
+```json
+// package.json
+"dependencies": {
+  "angular-canvas-viewer": "https://github.com/MagicCarpetSoftware/angular-canvas-viewer.git"
+}
+```
+
+In controller javascript file :
+```js
+require('angular-canvas-viewer');
+```
+
+In the template:
+```html
+<canvas-viewer src="test.jpg" title="TITLE" overlays="overlays" options="options"></canvas-viewer>
+```
+
+
+## How to use it (don't use this way in Gentu)
 
  The directive usage is as follow ( CanvasViewer.min.worker.js must be in same folder that CanvasViewer.min.js but not in `script` tag ), `src` can be either a `string` or a `File` or `Blob` object :
 
@@ -64,27 +84,27 @@ $scope.overlays = [{x : 50, y:155, w:106, h:29, color:'#00FF00'}];
 
 `options` is an `Object` as follow :
 
-Name | Properties | Definition
----- | ---------- | ----------
-zoom | value | Read or write the zoom factor (By default : 1.0)
-zoom | step | Set the zoom factor increment
-zoom | min | Minimum zoom factor allowed
-zoom | max | Maximum zoom factor allowed
-rotate | value | Read or write the rotation angle of picture (By default : 0)
-rotate | step | Set the rotation angle increment
-controls | toolbar | Boolean to show/hide toolbar controls button
-controls | image | Boolean to show/hide pictures controls button
-controls | sound | Boolean to show/hide sound controls button
-controls | fit | Possible values are `page` , `height` or `width`
-controls | disableZoom | Disable zoom functionnality
-controls | disableRotate | Disable rotate functionnality
-controls | disableMove | Disable move functionnality
-controls | numPage | Current page to display ( only for TIFF and PDF)
-controls | totalPage | Total number of pages ( only for TIFF and PDF)
-controls | filmstrip | Display multipage as film
-adsrc | | The Current `AudioContext` object ( Only for sound)
-ctx | | The Current `CanvasContext` object ( Only for sound)
-info | | The Metadata properties of viewed object ( Only for pictures)
+| Name     | Properties    | Definition                               |
+| -------- | ------------- | ---------------------------------------- |
+| zoom     | value         | Read or write the zoom factor (By default : 1.0) |
+| zoom     | step          | Set the zoom factor increment            |
+| zoom     | min           | Minimum zoom factor allowed              |
+| zoom     | max           | Maximum zoom factor allowed              |
+| rotate   | value         | Read or write the rotation angle of picture (By default : 0) |
+| rotate   | step          | Set the rotation angle increment         |
+| controls | toolbar       | Boolean to show/hide toolbar controls button |
+| controls | image         | Boolean to show/hide pictures controls button |
+| controls | sound         | Boolean to show/hide sound controls button |
+| controls | fit           | Possible values are `page` , `height` or `width` |
+| controls | disableZoom   | Disable zoom functionnality              |
+| controls | disableRotate | Disable rotate functionnality            |
+| controls | disableMove   | Disable move functionnality              |
+| controls | numPage       | Current page to display ( only for TIFF and PDF) |
+| controls | totalPage     | Total number of pages ( only for TIFF and PDF) |
+| controls | filmstrip     | Display multipage as film                |
+| adsrc    |               | The Current `AudioContext` object ( Only for sound) |
+| ctx      |               | The Current `CanvasContext` object ( Only for sound) |
+| info     |               | The Metadata properties of viewed object ( Only for pictures) |
 
 Sample `options` object with initial value or simple empty object `{}`:
 

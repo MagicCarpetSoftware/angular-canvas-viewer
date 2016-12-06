@@ -1,3 +1,5 @@
+export {FormatReader};
+
 function FormatReader() {
 	this.mimetype = [
 		"image/png",
@@ -65,7 +67,7 @@ FormatReader.prototype = {
 			}
 
 			if (pageObj == undefined) {
-				pageObj = parent.page; 
+				pageObj = parent.page;
 			}
 			var canvas = document.createElement('canvas');
 			var context = canvas.getContext('2d');
@@ -97,15 +99,15 @@ FormatReader.prototype = {
 					// 			});
 					// 			// Do drawing on rendering ended
 					// 			parent.rendered = true;
-					// 			callback();	
+					// 			callback();
 					// 			//
 					// 		}
 					// 	} else {
 					// 		// Single image rendering
 					// 		that.img = img;
-					// 		that.rendered = true;							
+					// 		that.rendered = true;
 					// 		// Do drawing on rendering ended
-					// 		callback();	
+					// 		callback();
 					// 	}
 					// 	parent.rendering = false;
 
@@ -125,14 +127,14 @@ FormatReader.prototype = {
 							});
 							// Do drawing on rendering ended
 							parent.rendered = true;
-							callback();	
-							parent.rendering = false;					
+							callback();
+							parent.rendering = false;
 						}
 					} else {
 						that.data = context.getImageData(0,0,viewport.width,viewport.height);
-						that.rendered = true;					
+						that.rendered = true;
 						callback();
-						parent.rendering = false;					
+						parent.rendering = false;
 					}
 				});
 			}
@@ -163,7 +165,7 @@ FormatReader.prototype = {
 					if (that.currentPage != that.options.controls.numPage) {
 						that._pdfDoc.getPage(that.options.controls.numPage).then(function(page) {
 							renderPage(that, that.options.controls.numPage, page);
-						});	
+						});
 					} else {
 						renderPage(that, that.options.controls.numPage, page);
 					}
@@ -201,9 +203,9 @@ FormatReader.prototype = {
 		that.data = null;
 		that.width = -1;
 		that.height = -1;
-		that.options = options;	
+		that.options = options;
 		that.images = [];
-		that.currentPage = -1;	
+		that.currentPage = -1;
 		that.isZoom = true;
 		this.refresh = function() {
 			if (that.reader.result==undefined)
@@ -245,7 +247,7 @@ FormatReader.prototype = {
 							that.img = that.images[0];
 						}
 						callback();
-						that.rendered = true;						
+						that.rendered = true;
 					}
 					that.images[p].src = that.tiff.toDataURL();
 					that.images[p].pageNum = p;
@@ -260,8 +262,8 @@ FormatReader.prototype = {
 					that.img = new Image();
 					that.img.onload = function() {
 						callback();
-						that.rendered = true;						
-					}					
+						that.rendered = true;
+					}
 					that.img.src = that.tiff.toDataURL();
 					that.currentPage = that.options.controls.numPage;
 				}
@@ -271,7 +273,7 @@ FormatReader.prototype = {
 		this.reader.onload = function() {
 			if (that.tiff != null) {
 				that.tiff.close();
-				that.tiff = null; 
+				that.tiff = null;
 			}
 			Tiff.initialize({TOTAL_MEMORY:16777216*5});
 			that.refresh();
@@ -291,9 +293,9 @@ FormatReader.prototype = {
 		that.img.onload = function() {
 			that.width = that.img.width;
 			that.height = that.img.height;
-			callback();	
-			that.rendered = true;			
-		}	
+			callback();
+			that.rendered = true;
+		}
 		that.data = null;
 		that.width = -1;
 		that.height = -1;
@@ -312,7 +314,7 @@ FormatReader.prototype = {
 		options.controls.totalPage = 1;
 		options.controls.numPage = 1;
 		this.refresh = function() {
-			// do nothing	
+			// do nothing
 		};
 		return this;
 	},
@@ -398,13 +400,13 @@ FormatReader.prototype = {
 			case "image/tif" :
 			case "image/tiff" :reader = { create : this.tiffReader }; break;
 			case "application/pdf" : reader = { create : this.pdfReader }; break;
-			case "image/png" : 
+			case "image/png" :
 			case "image/jpeg" : reader = { create : this.imageReader}; break;
-			case "audio/x-wav" : 
-			case "audio/wav" : 
-			case "audio/x-ogg" : 
+			case "audio/x-wav" :
+			case "audio/wav" :
+			case "audio/x-ogg" :
 			case "audio/ogg" : reader = { create : this.wavReader}; break;
-			case "audio/x-mpeg" : 
+			case "audio/x-mpeg" :
 			case "audio/mpeg" : reader = { create : this.mpegReader}; break;
 		};
 		return reader;

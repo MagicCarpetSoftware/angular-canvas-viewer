@@ -1,3 +1,5 @@
+import {FormatReader} from './FormatReader'
+
 angular.module('CanvasViewer', []).directive('canvasViewer', ['$window', '$http', '$timeout', '$q', function ($window, $http, $timeout, $q) {
   var formatReader = new FormatReader();
 

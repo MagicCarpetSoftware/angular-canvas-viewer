@@ -50,7 +50,7 @@ angular.module('CanvasViewer', []).directive('canvasViewer', ['$window', '$http'
       var ctx = canvasEl.getContext('2d');
       // look for
       var inNode = angular.element(iElm.find('div')[0])[0];
-      directiveParentNode = inNode.parentNode.parentNode;
+      var directiveParentNode = inNode.parentNode.parentNode;
       // orce correct canvas size
       var canvasSize = canvasEl.parentNode;
       ctx.canvas.width = canvasSize.clientWidth;

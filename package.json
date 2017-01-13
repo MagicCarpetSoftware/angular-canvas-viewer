@@ -1,19 +1,20 @@
 {
   "name": "angular-canvas-viewer",
-  "version": "1.0.0",
-  "description": "Viewer multi format directive",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-minify-css": "^1.2.3",
-    "gulp-run": "^1.6.12",
-    "gulp-uglify": "^1.5.1"
-  },
-  "devDependencies": {},
+  "version": "1.0.1",
+  "author": "fcrohas@gmail.com",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/MagicCarpetSoftware/angular-canvas-viewer",
+  "description": "A picture and sound viewer directive for AngularJS",
+  "main": "./dist/angular-canvas-viewer.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "webpack": "^1.14.0"
   },
   "repository": {
     "type": "git",
@@ -28,11 +29,5 @@
     "tiff",
     "ogg",
     "wav"
-  ],
-  "author": "fcrohas@gmail.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fcrohas/angular-raphael-viewer/issues"
-  },
-  "homepage": "https://github.com/fcrohas/angular-raphael-viewer#readme"
+  ]
 }

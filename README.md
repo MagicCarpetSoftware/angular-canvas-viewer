@@ -6,29 +6,25 @@ This is a picture and sound viewer directive for AngularJS
 
 A sample demo is available [here](http://fcrohas.github.io/angular-canvas-viewer).
 
-## Prerequisites
-
-* FontAweSome ( for nice icons library)
-* BootStrap ( for button look&feel )
-
 ## Features
-
 - [x] Support many format of pictures and sound (PNG, JPG, PDF, TIFF, WAV, OGG, MPEG)
-      - [x]Module delivery or whole package
-      - [x]Image rotation and Zoom parametric ( Rotation angle by default is set to 90°)
-      - [x]External control
-      - [x]Metadata information extraction
-      - [x]Support multipage ( TIFF and PDF)
+- [x] Module delivery or whole package
+- [x] Image rotation and Zoom parametric ( Rotation angle by default is set to 90°)
+- [x] External control
+- [x] Metadata information extraction
+- [x] Support multipage ( TIFF and PDF)
 
-## How to build (don't do this for Gentu)
+## How to build
 
-You need  `npm` package manager :
+```
+$ npm install
+$ npm run build
+```
 
-    # npm install
-    # gulp dist
+The output files locate in `./dist` folder.
 
-## How to use it in Gentu
-Edit package.json file:
+## How to use
+Edit `package.json` file, use a branch name instead of master if you want
 ```json
 // package.json
 "dependencies": {
@@ -36,16 +32,21 @@ Edit package.json file:
 }
 ```
 
-In controller javascript file :
+Import library and declare it as a dependency:
 ```js
-require('angular-canvas-viewer');
+// ES6 style
+import canvasViewer from 'angular-canvas-viewer'
+// Or if you prefer CommonJS style
+const canvasViewer = require('angular-canvas-viewer');
+
+// Then declare it as a dependency of your modules
+angular.module('your_module', [canvasViewer]);
 ```
 
 In the template:
 ```html
 <canvas-viewer src="test.jpg" title="TITLE" overlays="overlays" options="options"></canvas-viewer>
 ```
-
 
 ## How to use it (don't use this way in Gentu)
 

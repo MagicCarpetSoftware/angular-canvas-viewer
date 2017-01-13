@@ -1,6 +1,4 @@
-export {FormatReader};
-
-function FormatReader() {
+export default function FormatReader() {
 	this.mimetype = [
 		"image/png",
 		"image/jpeg"

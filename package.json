@@ -1,6 +1,6 @@
 {
   "name": "angular-canvas-viewer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "fcrohas@gmail.com",
   "scripts": {
     "build": "webpack"
@@ -9,7 +9,9 @@
   "homepage": "https://github.com/MagicCarpetSoftware/angular-canvas-viewer",
   "description": "A picture and sound viewer directive for AngularJS",
   "main": "./dist/angular-canvas-viewer.js",
-  "dependencies": {},
+  "dependencies": {
+    "angular": "^1.6.1"
+  },
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",

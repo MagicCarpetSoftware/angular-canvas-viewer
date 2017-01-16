@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("angular"));
+	else if(typeof define === 'function' && define.amd)
+		define(["angular"], factory);
+	else if(typeof exports === 'object')
+		exports["angular-canvas-viewer"] = factory(require("angular"));
+	else
+		root["angular-canvas-viewer"] = factory(root["angular"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -59,18 +69,21 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _FormatReader = __webpack_require__(2);
+	var _angular = __webpack_require__(2);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _FormatReader = __webpack_require__(3);
 	
 	var _FormatReader2 = _interopRequireDefault(_FormatReader);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = angular.module('canvasViewer', []).directive('canvasViewer', ['$window', '$http', '$timeout', '$q', function ($window, $http, $timeout, $q) {
+	exports.default = _angular2.default.module('canvasViewer', []).directive('canvasViewer', ['$window', '$http', '$timeout', '$q', function ($window, $http, $timeout, $q) {
 	  var formatReader = new _FormatReader2.default();
 	
 	  return {
 	    // name: '',
-	    // priority: 1,
 	    // terminal: true,
 	    scope: {
 	      imageSource: '=src',
@@ -78,15 +91,9 @@
 	      title: '@title',
 	      options: '=options'
 	    }, // {} = isolate, true = child, false/undefined = no change
-	    // controller: ['$scope', '$element', '$attrs', '$transclude' ,function(scope, $element, $attrs, $transclude) {
-	    // 	console.log('la',scope.options);
-	    // 	console.log(scope.options);
-	
-	    // }],
 	    // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 	    restrict: 'E',
 	    template: '\n    <div class="viewer-container">\n      <canvas class="viewer" ng-mouseleave="canMove=false" ng-mousedown="mousedown($event)" ng-mouseup="mouseup($event)" ng-init="canMove=false"\n        ng-mousemove="mousedrag($event,canMove)">\n      </canvas>\n      <div class="title" ng-if="title!=null">{{title}}</div>\n      <div class="command" ng-if="options.controls.image">\n        <button class="btn btn-info" ng-click="options.controls.numPage=options.controls.numPage-1" ng-hide="options.controls.totalPage==1"\n          title="Previous Page"><i class="fa fa-minus"></i></button>\n          <button class="btn btn-info" ng-hide="options.controls.totalPage==1">{{options.controls.numPage}}/{{options.controls.totalPage}}</button>\n          <button class="btn btn-info" ng-click="options.controls.numPage=options.controls.numPage+1" ng-hide="options.controls.totalPage==1"\n            title="Next Page"><i class="fa fa-plus"></i></button>\n            <button class="btn btn-info" ng-click="resizeTo(\'page\')" title="Fit to page"><i class="fa fa-file-o"></i></button>\n            <button class="btn btn-info" ng-click="rotate(-1)" ng-hide="options.controls.disableRotate" title="Rotate left"><i class="fa fa-rotate-left"></i></button>\n            <button class="btn btn-info" ng-click="rotate(1)" ng-hide="options.controls.disableRotate" title="Rotate right"><i class="fa fa-rotate-right"></i></button>\n            <button class="btn btn-info" ng-click="zoom(-1)" ng-hide="options.controls.disableZoom" title="Zoom out"><i class="fa fa-search-minus"></i></button>\n            <button class="btn btn-info" ng-click="zoom(1)" ng-hide="options.controls.disableZoom" title="Zoom in"><i class="fa fa-search-plus"></i></button>\n      </div>\n      <div class="command" ng-if="options.controls.sound">\n        <button class="btn btn-info" ng-click="stop()" title="Stop"><i class="fa fa-stop"></i></button>\n        <button class="btn btn-info" ng-click="play()" title="Play"><i class="fa fa-play"></i></button>\n      </div>\n    </div>\n    ',
-	    // templateUrl: '',
 	    // replace: true,
 	    // transclude: true,
 	    // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
@@ -94,7 +101,7 @@
 	      var canvasEl = iElm.find('canvas')[0];
 	      var ctx = canvasEl.getContext('2d');
 	      // look for
-	      var inNode = angular.element(iElm.find('div')[0])[0];
+	      var inNode = _angular2.default.element(iElm.find('div')[0])[0];
 	      var directiveParentNode = inNode.parentNode.parentNode;
 	      // orce correct canvas size
 	      var canvasSize = canvasEl.parentNode;
@@ -110,7 +117,7 @@
 	      var reader = null;
 	
 	      // Merge scope with default values
-	      scope.options = angular.merge({}, {
+	      scope.options = _angular2.default.merge({}, {
 	        ctx: null,
 	        adsrc: null,
 	        zoom: {
@@ -183,7 +190,7 @@
 	
 	        // new added
 	        overlays = [];
-	        angular.forEach(newarr, function (item) {
+	        _angular2.default.forEach(newarr, function (item) {
 	          overlays.push(item);
 	        });
 	
@@ -238,7 +245,7 @@
 	      });
 	
 	      // Bind mousewheel
-	      angular.element(canvasEl).bind("DOMMouseScroll mousewheel onmousewheel", function ($event) {
+	      _angular2.default.element(canvasEl).bind("DOMMouseScroll mousewheel onmousewheel", function ($event) {
 	
 	        // cross-browser wheel delta
 	        var event = $window.event || $event; // old IE support
@@ -320,7 +327,7 @@
 	          }
 	        } else {
 	          if (reader.images != null) {
-	            angular.forEach(reader.images, function (image) {
+	            _angular2.default.forEach(reader.images, function (image) {
 	              ctx.drawImage(image, 0, 0, image.width, image.height);
 	              ctx.beginPath();
 	              ctx.rect(0, 0, image.width, image.height);
@@ -333,7 +340,7 @@
 	          // Draw image at correct position with correct scale
 	          if (reader.data != null) {
 	            var offsetY = 0;
-	            angular.forEach(reader.data, function (data) {
+	            _angular2.default.forEach(reader.data, function (data) {
 	              ctx.putImageData(data, picPos.x, picPos.y + offsetY);
 	              ctx.beginPath();
 	              ctx.rect(0, 0, reader.width, reader.height);
@@ -350,7 +357,7 @@
 	
 	        // Draw overlays
 	        if (overlays.length > 0) {
-	          angular.forEach(overlays, function (item) {
+	          _angular2.default.forEach(overlays, function (item) {
 	            ctx.save();
 	            // move to mouse position
 	            ctx.translate(picPos.x + centerX, picPos.y + centerY);
@@ -374,7 +381,7 @@
 	        }
 	      }
 	
-	      angular.element(canvasEl).bind('mousedown', function ($event) {
+	      _angular2.default.element(canvasEl).bind('mousedown', function ($event) {
 	        if (scope.options.controls.disableMove) {
 	          return;
 	        }
@@ -384,7 +391,7 @@
 	        curPos.y = $event.offsetY;
 	      });
 	
-	      angular.element(canvasEl).bind('mouseup', function ($event) {
+	      _angular2.default.element(canvasEl).bind('mouseup', function ($event) {
 	        if (scope.options.controls.disableMove) {
 	          return;
 	        }
@@ -392,7 +399,7 @@
 	        scope.canMove = false;
 	      });
 	
-	      angular.element(canvasEl).bind('mousemove', function ($event) {
+	      _angular2.default.element(canvasEl).bind('mousemove', function ($event) {
 	        mousePos.x = $event.offsetX;
 	        mousePos.y = $event.offsetY;
 	        if (scope.options.controls.disableMove) {
@@ -599,6 +606,12 @@
 
 /***/ },
 /* 2 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ },
+/* 3 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1026,5 +1039,7 @@
 	};
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;
 //# sourceMappingURL=angular-canvas-viewer.js.map

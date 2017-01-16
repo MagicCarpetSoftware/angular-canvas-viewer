@@ -1,3 +1,4 @@
+import angular from 'angular'
 import FormatReader from './FormatReader'
 
 export default angular.module('canvasViewer', [])
@@ -7,7 +8,6 @@ export default angular.module('canvasViewer', [])
 
       return {
         // name: '',
-        // priority: 1,
         // terminal: true,
         scope: {
           imageSource: '=src',
@@ -15,11 +15,6 @@ export default angular.module('canvasViewer', [])
           title: '@title',
           options: '=options'
         }, // {} = isolate, true = child, false/undefined = no change
-        // controller: ['$scope', '$element', '$attrs', '$transclude' ,function(scope, $element, $attrs, $transclude) {
-        // 	console.log('la',scope.options);
-        // 	console.log(scope.options);
-
-        // }],
         // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
         restrict: 'E',
         template: `
@@ -46,7 +41,6 @@ export default angular.module('canvasViewer', [])
       </div>
     </div>
     `,
-        // templateUrl: '',
         // replace: true,
         // transclude: true,
         // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),

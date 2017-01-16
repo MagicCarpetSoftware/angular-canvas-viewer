@@ -34,13 +34,13 @@ Edit `package.json` file, use a branch name instead of master if you want
 
 Import library and declare it as a dependency:
 ```js
-// ES6 style
-import canvasViewer from 'angular-canvas-viewer'
+// ES6 import style
+import angularCanvasViewer from 'angular-canvas-viewer'
 // Or if you prefer CommonJS style
-const canvasViewer = require('angular-canvas-viewer');
+const angularCanvasViewer = require('angular-canvas-viewer');
 
 // Then declare it as a dependency of your modules
-angular.module('your_module', [canvasViewer]);
+angular.module('your_module', [angularCanvasViewer]);
 ```
 
 In the template:

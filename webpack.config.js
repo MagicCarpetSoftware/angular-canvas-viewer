@@ -5,7 +5,12 @@ module.exports = {
   },
   output: {
     path: './dist',
-    filename: 'angular-canvas-viewer.js'
+    filename: 'angular-canvas-viewer.js',
+    library: 'angular-canvas-viewer',
+    libraryTarget: 'umd'
+  },
+  externals: {
+    'angular': 'angular'
   },
   module: {
     loaders: [
